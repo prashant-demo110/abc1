@@ -21,4 +21,4 @@ jobs:
       uses: atlassian/gajira-transition@master
       with:
         issue: ${{ github.head_ref }}
-        transition: "In progress"
+        target-status: In Progress
