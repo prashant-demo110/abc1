@@ -21,4 +21,9 @@ jobs:
       uses: atlassian/gajira-transition@master
       with:
         issue: ${{ github.head_ref }}
+        transition: "In progress"
+        
+    - name: Jira find and transition issues
+      uses: bloobirds-it/action-transition-multiple-jira-issues@v1.1.0
+      with:
         target-status: In Progress
