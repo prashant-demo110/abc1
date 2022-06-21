@@ -29,8 +29,7 @@ jobs:
     #   with:
     #     jira-base-url: https://<yourdomain>.atlassian.net
     #     jira-user-email: human@example.com
-    #     jira-api-token: ${{ secrets.JIRA_API_TOKEN }}
-    #     github-token: ${{ secrets.GITHUB_TOKEN }}
+    #     jira-api-token: ${{ secrets.JIRA_REST_API }}
     #     target-status: In Progress
  
 
