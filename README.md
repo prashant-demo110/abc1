@@ -7,3 +7,4 @@ test4
 permission given
 TEST5
 TEST6
+TEST7
