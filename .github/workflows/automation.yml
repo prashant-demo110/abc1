@@ -31,5 +31,5 @@ jobs:
     - name: Jira find and transition issues
       uses: chontawee/gj-find-transition-issues@1.0.4
       with:
-        issuetypes: Task,Epic
-        transitions: Peer Review,Peer Review
+        issue: ${{ github.head_ref }}
+        transitions: "Peer Review"
