@@ -32,4 +32,4 @@ jobs:
       uses: chontawee/gj-find-transition-issues@1.0.4
       with:
         issue: ${{ github.head_ref }}
-        transitions: "Peer Review"
+        transition: "Peer Review"
