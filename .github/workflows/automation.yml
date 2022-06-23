@@ -28,8 +28,8 @@ jobs:
 #          issue: ${{ github.head_ref }}
 #          transition: "Peer Review"
 
-    - name: Jira find and transition issues
-      uses: chontawee/gj-find-transition-issues@1.0.4
+    - name: Transition issue
+      uses: atlassian/gajira-transition@master
       with:
         issue: ${{ github.head_ref }}
-        transition: "Peer Review"
+        transition: "PEER REVIEW"
