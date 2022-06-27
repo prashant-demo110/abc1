@@ -9,9 +9,6 @@ jobs:
     steps:
       - name: Print a manual name.
         env:
-          MY_VAR: Hi there! My name is 
-          FIRST_NAME: Mona
-          MIDDLE_NAME: The
-          LAST_NAME: Octocat
+          MY_VAR: Hey, The name of this repo is 
         run: |
-          echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME ${{ github.event.repository.name }}.
+          echo $MY_VAR ${{ github.event.repository.name }}.
