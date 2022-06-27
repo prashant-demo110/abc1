@@ -1,0 +1,17 @@
+name: repo_name_printing
+
+on: push
+
+jobs:
+  my-job:
+    name: Pulkit Job 1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print a manual name.
+        env:
+          MY_VAR: Hi there! My name is 
+          FIRST_NAME: Mona
+          MIDDLE_NAME: The
+          LAST_NAME: Octocat
+        run: |
+          echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME ${{ github.event.repository.name }}.
