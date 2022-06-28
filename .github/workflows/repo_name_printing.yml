@@ -3,12 +3,10 @@ name: repo_name_printing
 on: push
 
 jobs:
-  my-job:
-    name: Pulkit Job 1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print a manual name.
-        env:
-          MY_VAR: Hey, The name of this repo is 
-        run: |
-          echo $MY_VAR ${{ github.event.repository.name }}.
+    Assigning:
+      name: Creating ECR Repository
+      runs-on: ubuntu-latest
+      steps:
+        - name: Printing Name of the Repository.
+          run: |
+            echo ${{ github.event.repository.name }}.
