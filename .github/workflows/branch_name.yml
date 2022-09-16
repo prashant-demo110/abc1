@@ -25,16 +25,15 @@ jobs:
       run: |
         echo ${{ steps.split.outputs._0 }}
         echo ${{ steps.split.outputs._1 }}  
+        
+    - uses: jungwinter/split@v2
+      id: split2
+      with:
+          msg: ${{ steps.split.outputs._0 }}
+          separator: '-'
 
-
-#     - uses: rishabhgupta/split-by@v1
-#       id: split
-#       with:
-#        string: "$GITHUB_HEAD_REF"
-#        split-by: '/'
-       
-#     - name: release package
-#       run: |
-#         echo ${{ steps.split.outputs._0 }}
-#         echo ${{ steps.split.outputs._1 }}    
-          
+    - name: release package
+      run: |
+        echo ${{ steps.split2.outputs._0 }}
+        echo ${{ steps.split2.outputs._1 }}  
+        echo ${{ steps.split2.outputs._2 }}  
