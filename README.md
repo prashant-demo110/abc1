@@ -1,2 +1,2 @@
 # abc1
-This is your third repository
+This is sample repository
