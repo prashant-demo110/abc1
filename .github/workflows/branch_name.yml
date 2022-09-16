@@ -1,27 +1,17 @@
 on:
-#   pull_request:
-#     types: [closed]
-#     branches: main # PRs to the following branches will trigger the workflow
-  push:
-    branches: new-CICD-45/sample-api
+  pull_request:
+    types: [closed]
+    branches: main # PRs to the following branches will trigger the workflow
 jobs:
   build:
+    if: github.event.pull_request.merged
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Print Head Branch Name
-        run: |
-         echo "Compare Branch Name: $GITHUB_HEAD_REF"
-         echo "Base Branch Name: $GITHUB_BASE_REF" 
-         echo ::set-output name=Compare_Name::"$GITHUB_HEAD_REF"
-         echo ::set-output name=Base_Name::"$GITHUB_BASE_REF" 
-       
-      - uses: jungwinter/split@v2
-        id: split
-        with:
-          msg: "$Compare_Name"
-          separator: '/'
-      - name: Printing the Names 
-        run: |
-          echo ${{ steps.split.outputs._0 }}
-          echo ${{ steps.split.outputs._1 }}
+    - uses: actions/checkout@v2
+    - name: Print Head Branch Name
+      if: github.event_name == 'pull_request' && github.event.action == 'closed'
+      run: |
+       echo Compare Branch Name = "$GITHUB_HEAD_REF"
+       echo Base Branch Name = "$GITHUB_BASE_REF"
+       echo ::set-output name=COMPARE::"$GITHUB_HEAD_REF"
+       echo ::set-output name=BASE::"$GITHUB_BASE_REF"
