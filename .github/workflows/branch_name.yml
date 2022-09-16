@@ -13,6 +13,8 @@ jobs:
         run: |
          echo "Compare_Name: Compare_Name is = $GITHUB_HEAD_REF"
          echo "Base_Name: Base_Name is = $GITHUB_BASE_REF"
+         echo ::set-output name=Compare_Name::"$Compare_Name"
+         echo ::set-output name=Base_Name::"$Base_Name"
 
       - uses: rishabhgupta/split-by@v1
         id: split
