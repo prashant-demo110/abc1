@@ -1,0 +1,17 @@
+on:
+  pull_request:
+    types: [closed]
+    branches: main # PRs to the following branches will trigger the workflow
+jobs:
+  build:
+    if: github.event.pull_request.merged
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Print Head Branch Name
+      if: github.event_name == 'pull_request'
+      run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_HEAD_REF})"
+    - name: Print Base Branch Name
+      if: github.event_name == 'pull_request'
+      run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_BASE_REF})"
+    
