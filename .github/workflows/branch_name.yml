@@ -11,6 +11,5 @@ jobs:
     - name: Print Head Branch Name
       if: github.event_name == 'pull_request' && github.event.action == 'closed'
       run: |
-      Compare_Name=$(echo "$GITHUB_HEAD_REF")
-      echo "Compare_Name: Compare_Name is : $Compare_Name"
-      echo ::set-output name=Compare_Name::"$Compare_Name"
+       echo Compare = "$GITHUB_HEAD_REF"
+       echo Base = "$GITHUB_BASE_REF"
