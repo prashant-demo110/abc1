@@ -14,19 +14,10 @@ jobs:
          echo Compare Branch Name = "$GITHUB_HEAD_REF"
          echo Base Branch Name = "$GITHUB_BASE_REF"
 
-      - name: Spliting of the output
       - uses: rishabhgupta/split-by@v1
         id: split
         with:
           string: "$GITHUB_HEAD_REF"
           split-by: '/'
-          first: "${{ steps.split.outputs._0}}"
-          second: "${{ steps.split.outputs._1}}" 
-          echo first element Name: "$first"  
-          echo second element Name: "$second" 
-#       - name: Printing of the output
-#         run: |
-#           first="${{ steps.split.outputs._0}}"
-#           second="${{ steps.split.outputs._1}}" 
-#           echo first element Name = "$first"  
-#           echo second element Name = "$second"  
+      - run: | 
+          echo "${{ steps.split.outputs._1}}"
