@@ -20,10 +20,13 @@ jobs:
         with:
           string: "$GITHUB_HEAD_REF"
           split-by: '/'
-          
-      - name: Printing of the output
-        run: |
-          first="${{ steps.split.outputs._0}}"
-          second="${{ steps.split.outputs._1}}" 
-          echo first element Name = "$first"  
-          echo second element Name = "$second"  
+          first: "${{ steps.split.outputs._0}}"
+          second: "${{ steps.split.outputs._1}}" 
+          echo first element Name: "$first"  
+          echo second element Name: "$second" 
+#       - name: Printing of the output
+#         run: |
+#           first="${{ steps.split.outputs._0}}"
+#           second="${{ steps.split.outputs._1}}" 
+#           echo first element Name = "$first"  
+#           echo second element Name = "$second"  
