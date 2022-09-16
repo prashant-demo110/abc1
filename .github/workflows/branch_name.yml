@@ -19,7 +19,7 @@ jobs:
     - uses: jungwinter/split@v2
       id: split
       with:
-          msg: "$COMPARE"
+          msg: "$GITHUB_HEAD_REF"
           separator: '/'
 
     - name: release package
