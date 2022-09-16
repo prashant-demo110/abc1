@@ -15,3 +15,14 @@ jobs:
        echo Base Branch Name = "$GITHUB_BASE_REF"
        echo ::set-output name=COMPARE::"$GITHUB_HEAD_REF"
        echo ::set-output name=BASE::"$GITHUB_BASE_REF"
+       
+    - uses: jungwinter/split@v2
+      id: split
+      with:
+          msg: "$COMPARE"
+          separator: '/'
+
+    - name: release package
+      run: |
+        echo ${{ steps.split.outputs._0 }}
+        echo ${{ steps.split.outputs._1 }}  
