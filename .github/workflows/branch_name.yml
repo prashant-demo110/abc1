@@ -1,23 +1,24 @@
 on:
-  pull_request:
-    types: [closed]
-    branches: main # PRs to the following branches will trigger the workflow
+#   pull_request:
+#     types: [closed]
+#     branches: main # PRs to the following branches will trigger the workflow
+  push:
+    branches: new-CICD-45/sample-api
 jobs:
   Executing:
-    if: github.event.pull_request.merged
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Print Head Branch Name
-        if: github.event_name == 'pull_request' && github.event.action == 'closed'
         run: |
-         echo Compare Branch Name = "$GITHUB_HEAD_REF"
-         echo Base Branch Name = "$GITHUB_BASE_REF"
+         echo "Compare_Name: Compare_Name is = $GITHUB_HEAD_REF"
+         echo "Base_Name: Base_Name is = $GITHUB_BASE_REF"
 
       - uses: rishabhgupta/split-by@v1
         id: split
         with:
-          string: "$GITHUB_HEAD_REF"
+          string: "$Compare_Name"
           split-by: '/'
       - run: | 
+          echo "${{ steps.split.outputs._0}}"
           echo "${{ steps.split.outputs._1}}"
