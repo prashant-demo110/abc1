@@ -10,7 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Print Head Branch Name
-        if: github.event_name == 'pull_request' && github.event.action == 'closed'
         run: |
          echo Compare Branch Name = "$GITHUB_HEAD_REF"
          echo Base Branch Name = "$GITHUB_BASE_REF" 
