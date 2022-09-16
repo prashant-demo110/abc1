@@ -1,23 +1,23 @@
-name: Github to Jira Automation
+# name: Github to Jira Automation
 
-on:
-  pull_request:
-    types: [opened, reopened]
+# on:
+#   pull_request:
+#     types: [opened, reopened]
 
-jobs:
-  test-transition-issue:
-    name: Transition Issue
-    runs-on: ubuntu-latest
-    steps:
-    - name: Login
-      uses: atlassian/gajira-login@master
-      env:
-        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-        JIRA_API_TOKEN: ${{ secrets.JIRA_REST_API }}
+# jobs:
+#   test-transition-issue:
+#     name: Transition Issue
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Login
+#       uses: atlassian/gajira-login@master
+#       env:
+#         JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+#         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+#         JIRA_API_TOKEN: ${{ secrets.JIRA_REST_API }}
 
-    - name: Transition issue to Peer Review
-      uses: atlassian/gajira-transition@master
-      with:
-        issue: ${{ github.head_ref }}
-        transition: "PEER REVIEW"
+#     - name: Transition issue to Peer Review
+#       uses: atlassian/gajira-transition@master
+#       with:
+#         issue: ${{ github.head_ref }}
+#         transition: "PEER REVIEW"
