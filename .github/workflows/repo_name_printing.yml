@@ -1,12 +1,12 @@
-name: repo_name_printing
+# name: repo_name_printing
 
-on: push
+# on: push
 
-jobs:
-    Assigning:
-      name: Creating ECR Repository
-      runs-on: ubuntu-latest
-      steps:
-        - name: Printing Name of the Repository.
-          run: |
-            echo ${{ github.event.repository.name }}.
+# jobs:
+#     Assigning:
+#       name: Creating ECR Repository
+#       runs-on: ubuntu-latest
+#       steps:
+#         - name: Printing Name of the Repository.
+#           run: |
+#             echo ${{ github.event.repository.name }}.
