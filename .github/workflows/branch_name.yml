@@ -5,22 +5,22 @@ on:
   push:
     branches: new-CICD-45/sample-api
 jobs:
-  Executing:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Print Head Branch Name
-        run: |
-         echo "Compare_Name: Compare_Name is = $GITHUB_HEAD_REF"
-         echo "Base_Name: Base_Name is = $GITHUB_BASE_REF"
-         echo ::set-output name=Compare_Name::"$Compare_Name"
-         echo ::set-output name=Base_Name::"$Base_Name"
-
-      - uses: rishabhgupta/split-by@v1
+        id: data
+        run: echo "::set-output name=COMPARE::${GITHUB_HEAD_REF}"
+        
+      - name: Print Base Branch Name  
+        run: echo "::set-output name=BASE::${GITHUB_BASE_REF}"
+        
+      - uses: jungwinter/split@v2
         id: split
         with:
-          string: "$Compare_Name"
-          split-by: '/'
-      - run: | 
-          echo "${{ steps.split.outputs._0}}"
-          echo "${{ steps.split.outputs._1}}"
+          msg: ${{ steps.data.outputs.COMPARE }}
+          separator: '/'
+      - name: Printing the Names 
+        run: |
+          echo ${{ steps.split.outputs._0 }}
