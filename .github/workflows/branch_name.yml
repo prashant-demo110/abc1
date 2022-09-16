@@ -15,15 +15,12 @@ jobs:
          echo Base Branch Name = "$GITHUB_BASE_REF"
   Spliting:
     runs-on: ubuntu-latest
-    steps:
-      - name: Spliting the Branch Name    
+    steps: 
       - uses: rishabhgupta/split-by@v1
         id: split
         with:
           string: "$GITHUB_HEAD_REF"
           split-by: '/'
-
-#       - name: Printing the Branch Name      
-#       - run: | 
-#           echo First Element is : "${{ steps.split.outputs._0}}"
-#           echo Second Element is : "${{ steps.split.outputs._1}}"
+#       - run: |
+#          echo First Element is : "${{ steps.split.outputs._0}}"
+#          echo First Element is : "${{ steps.split.outputs._1}}"
