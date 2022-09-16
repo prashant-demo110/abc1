@@ -18,7 +18,7 @@ jobs:
     - uses: jungwinter/split@v2
       id: split
       with:
-          msg: ${{ steps.headBranch.outputs.COMPARE }}
+          msg: ${{ steps.data.outputs.COMPARE }}
           separator: '/'
 
     - name: release package
