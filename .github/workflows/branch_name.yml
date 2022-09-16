@@ -9,33 +9,32 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Print Head Branch Name
+      id: data
       if: github.event_name == 'pull_request' && github.event.action == 'closed'
       run: |
-       echo Compare Branch Name = "$GITHUB_HEAD_REF"
-       echo Base Branch Name = "$GITHUB_BASE_REF"
        echo ::set-output name=COMPARE::"$GITHUB_HEAD_REF"
        echo ::set-output name=BASE::"$GITHUB_BASE_REF"
        
-#     - uses: jungwinter/split@v2
-#       id: split
-#       with:
-#           msg: "$GITHUB_HEAD_REF"
-#           separator: '/'
-
-#     - name: release package
-#       run: |
-#         echo ${{ steps.split.outputs._0 }}
-#         echo ${{ steps.split.outputs._1 }}  
-
-
-    - uses: rishabhgupta/split-by@v1
+    - uses: jungwinter/split@v2
       id: split
       with:
-       string: "$GITHUB_HEAD_REF"
-       split-by: '/'
-       
+          msg: ${{ steps.headBranch.outputs.COMPARE }}
+          separator: '/'
+
     - name: release package
       run: |
         echo ${{ steps.split.outputs._0 }}
-        echo ${{ steps.split.outputs._1 }}    
+        echo ${{ steps.split.outputs._1 }}  
+
+
+#     - uses: rishabhgupta/split-by@v1
+#       id: split
+#       with:
+#        string: "$GITHUB_HEAD_REF"
+#        split-by: '/'
+       
+#     - name: release package
+#       run: |
+#         echo ${{ steps.split.outputs._0 }}
+#         echo ${{ steps.split.outputs._1 }}    
           
