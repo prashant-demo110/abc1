@@ -3,21 +3,15 @@ on:
     types: [closed]
     branches: main # PRs to the following branches will trigger the workflow
 jobs:
-  Executing:
+  build:
     if: github.event.pull_request.merged
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Print Head Branch Name
-        if: github.event_name == 'pull_request' && github.event.action == 'closed'
-        run: |
-         echo Compare Branch Name = "$GITHUB_HEAD_REF"
-         echo Base Branch Name = "$GITHUB_BASE_REF"
-
-      - uses: rishabhgupta/split-by@v1
-        id: split
-        with:
-          string: "$GITHUB_HEAD_REF"
-          split-by: '/'
-      - run: | 
-          echo "${{ steps.split.outputs._1}}"
+    - uses: actions/checkout@v2
+    - name: Print Head Branch Name
+      if: github.event_name == 'pull_request' && github.event.action == 'closed'
+      run: |
+       echo Compare Branch Name = "$GITHUB_HEAD_REF"
+       echo Base Branch Name = "$GITHUB_BASE_REF"
+       echo ::set-output name=COMPARE::"$GITHUB_HEAD_REF"
+       echo ::set-output name=BASE::"$GITHUB_BASE_REF"
